@@ -1,0 +1,139 @@
+.matCardStyle{
+    // height: calc(100vh - 105px);
+    overflow: auto;
+  }
+
+.tableHeaddiv {
+    display: flex;
+    padding-top: 5px;
+    justify-content: center;
+    width: 100%;
+  }
+
+.tablediv {
+    display: flex;
+    justify-content: center;
+    padding-top: 1px;
+    width: 100%;
+  }
+
+.buttonDiv {
+    // display: flex;
+    width: 98%;
+    text-align: right;
+    padding-top: 8px;;
+}  
+
+.cardHeaderText {
+    padding-left:20px;
+    padding-top:20px;
+    padding-bottom:15px;
+    font-size: 22px;
+    color:#e57e00;
+}
+.subHeaderText {
+    font-size: 15px;
+    font-weight: 600; 
+    color: darkslategrey;
+    width: 160px;    
+}
+
+.subHeaderInfoText {
+    font-size: 14px;
+    font-weight: 500; 
+    text-align: left;
+    color: darkgoldenrod;   
+}
+
+.subHeaderValue {
+    font-size: 15px;
+    font-weight: 600; 
+    // color: #5f6d73;
+    color: #3f7cc3;
+    padding-top: 3px;
+    padding-bottom: 3px;    
+}
+
+#mytable {
+align-self: center;
+}
+
+#tblMain table th {
+    background-color: #a7cdf9;
+    // background-color: #5f6d73;
+    font-size: 14px;
+    color:#274e7a;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+#tblMain table td {
+
+    font-size: 14px;
+    color:#4c575c;
+    padding-left: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 8px;
+}
+
+.mat-row:nth-child(even){
+    background-color:#ffffff;
+    // background-color:#c3c8ca;
+    }
+
+.mat-row:nth-child(odd){
+    background-color:#ffffff;
+    // background-color:#ebeced;
+    }
+
+.w-10 {
+    width: 10%;
+    
+    }    
+.w-15 {
+    width: 15%;
+    
+    }
+.w-30 {
+    width: 30%;        
+    }
+.w-30 {
+    width: 30%;        
+    }
+.w-60 {
+        width: 60%;
+    }    
+
+.sampleButton {
+    color: white;
+    background-color:#4F9CF4;
+    height: 34px;
+    margin-top: 12px;
+    width:150px;
+    border: blue;
+}
+
+.todoButton {
+    color: white;
+    background-color:gray;
+    height: 34px;
+    margin-top: 12px;
+    width:150px;
+    border:darkgray;
+}
+
+.outCorrect {
+    text-align: center;
+    color: green;
+}
+
+.outIncorrect {
+    text-align: center;
+    color: red;
+}
+
+.outInvalid {
+    text-align: center;
+    color: royalblue;
+}

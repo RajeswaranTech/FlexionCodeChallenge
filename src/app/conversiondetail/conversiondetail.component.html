@@ -1,0 +1,57 @@
+<div id="temp_vol_container">
+<h1 mat-dialog-title><strong>{{action}} Conversion Check</strong></h1>
+<div mat-dialog-content>
+  
+    <mat-form-field *ngIf="action != 'Delete'">
+        <mat-label>Conversion Metric</mat-label>
+        <mat-select placeholder="Select" [(value)]="local_data.convType"
+            [(ngModel)]="local_data.convType"  (selectionChange)="convTypeChanged(local_data.convType)">
+            
+            <mat-option *ngFor="let indConvType of conversionType" [value]="indConvType.value">{{indConvType.displayValue}}</mat-option> 
+        </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field *ngIf="action != 'Delete'">
+      <mat-label>Input Unit</mat-label>
+      <mat-select placeholder="Select" [(value)]="local_data.inputUnit"
+          [(ngModel)]="local_data.inputUnit" >
+          
+          <mat-option *ngFor="let indConvValue of conv_values" [value]="indConvValue.value">{{indConvValue.displayValue}}</mat-option> 
+      </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="action != 'Delete'">
+      <mat-label>Target Unit</mat-label>
+      <mat-select placeholder="Select" [(value)]="local_data.targetUnit"
+          [(ngModel)]="local_data.targetUnit">
+          
+          <mat-option *ngFor="let indConvValue of conv_values" [value]="indConvValue.value">{{indConvValue.displayValue}}</mat-option> 
+      </mat-select>
+  </mat-form-field>
+
+
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+      <input matInput placeholder="Input Value" id="txtInput" class="form-control" required [ngModel]="local_data.inputValue" value="{{local_data.inputValue}}" (change) = "checkOutput('inputValue',$event)">
+      
+    </mat-form-field>
+    <div *ngIf="!blnValidInput" style="margin-top: -18px;padding-top:0;color: red;">Please enter valid number for Input Value.</div>
+
+    <mat-form-field *ngIf="action != 'Delete'">
+      <input matInput placeholder="Student Response" [(ngModel)]="local_data.studentResponse" value="{{local_data.studentResponse}}" (change) = "checkOutput('studentResponse',$event)">  
+    </mat-form-field>
+
+
+    <mat-form-field *ngIf="action != 'Delete'">
+      <input matInput placeholder="Output" readonly [(ngModel)]="local_data.output" value="{{local_data.output}}">
+    </mat-form-field>
+
+    <ng-template #elseTemplate>
+      Sure to delete ? 
+    </ng-template>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()"  mat-flat-button color="primary">Submit</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
+</div>

@@ -1,0 +1,102 @@
+      <div class="container text-center" id="temp_vol_container">
+        <div style="width:96%;margin-left:2%;">
+        <div class='header_child_container'>
+          <div class ='card-header-container-left'>
+            <div class = "cardHeaderText">
+              <table style="width: 100%;">
+                <tr>
+                  <td style="width: 50%; text-align: left;font-weight: 600;">Temperature and Volume Conversion</td>
+                  <td style="width: 50%; text-align: right;">
+                    <button mat-button (click)="openMangeStudent('Add','')" mat-flat-button class="todoButton">+ Add Student</button>
+                  </td>
+                </tr>
+              </table>
+              
+              
+            </div>
+          </div>
+        </div> 
+      </div>
+  
+     <div *ngFor="let indValue of arrStudents; let i = index" style="padding-bottom: 20px;"> 
+
+        <div class="buttonDiv">          
+        </div>
+          
+        <div class="tableHeaddiv">
+          <table style="width: 96%;text-align: left;padding-top: 5px;padding-bottom: 5px;">
+
+            <tr>
+              <td ><span class= "subHeaderText">Student ID: </span><span class="subHeaderValue">{{indValue.student_id}}</span></td>
+              <td ><span class= "subHeaderText">Student Name: </span> <span class="subHeaderValue">{{indValue.name}}</span></td>
+              <td style="text-align: right;">
+                <button mat-button  (click)="openMangeStudent('Update', indValue.student_id)" mat-flat-button class="todoButton">Edit Student</button>&nbsp;
+                <button mat-button  (click)="openMangeStudent('Delete',indValue.student_id)" mat-flat-button class="todoButton">Delete Student</button> &nbsp;  
+                <button mat-button (click)="openConversion('Add',{},indValue.student_id)" mat-flat-button class="sampleButton">+ Check Conversion</button>
+              </td> 
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="tablediv">
+          <table *ngIf = "dataSource[indValue.student_id] == undefined" style="width: 96%;text-align: left;padding-top: 5px;padding-bottom: 5px;">
+            <tr>
+              <td class= "subHeaderInfoText">Details are not available for this Student.</td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="tablediv" id="tblMain">
+
+          <table  id="studentTable{{i}}"  *ngIf = "dataSource[indValue.student_id] && dataSource[indValue.student_id].length > 0" mat-table [dataSource]="dataSource[indValue.student_id]"  style="width: 96%;" #mytable class="my-table mat-elevation-z8">
+        
+            <!-- title Columns -->
+            <ng-container matColumnDef="inputValue">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-15'"  style="text-align: right;"> Input Numerical Value </th>
+              <td mat-cell *matCellDef="let element" style="text-align: right;"> {{element.inputValue}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="inputUnit">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-20'"> Input Unit of Measure </th>
+              <td mat-cell *matCellDef="let element" style="text-align: left;"> {{element.inputUnit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="targetUnit">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-20'"  style="text-align: left;"> Target Unit of Measure </th>
+              <td mat-cell *matCellDef="let element" style="text-align: left;"> {{element.targetUnit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="studentResponse">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-15'"  style="text-align: right;"> Student Response </th>
+              <td mat-cell *matCellDef="let element" style="text-align: right;"> {{element.studentResponse}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="output">
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-20'"  style="text-align: center;"> Output </th>
+              <td mat-cell *matCellDef="let element"> <span [ngClass]="{'outCorrect' : (element.output == 'correct'),
+                'outIncorrect' : (element.output == 'incorrect'), 'outInvalid' : (element.output == 'invalid') }">{{element.output}}</span>  </td>
+            </ng-container>
+            
+            
+            <!-- Action Column -->
+            <ng-container matColumnDef="action" >
+              <th mat-header-cell *matHeaderCellDef [ngClass]="'w-15'" style="text-align: center;"> Action </th>
+              <td mat-cell *matCellDef="let element" class="action-link" style="text-align: center;">
+                <mat-icon style="color: #5f6d73;cursor: pointer;"  (click)="openConversion('Update',element,indValue.std_question_id)">edit</mat-icon> &nbsp;&nbsp;
+                <mat-icon  style="color: #5f6d73;cursor: pointer;"  (click)="openConversion('Delete',element,indValue.std_question_id)">delete</mat-icon>   
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+      </div>
+
+      </div>
+  
+
+  
